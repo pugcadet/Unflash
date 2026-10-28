@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/48.png" alt="" class="logo">
+    <div class="title">
+      <h1>Unflash</h1>
+      <p id="host">—</p>
+    </div>
+    <label class="switch" title="On / off everywhere">
+      <input type="checkbox" id="enabled"><span></span>
+    </label>
+  </header>
+
+  <section class="row">
+    <div>
+      <strong>This site</strong>
+      <p id="status" class="muted">…</p>
+    </div>
+    <label class="switch"><input type="checkbox" id="site"><span></span></label>
+  </section>
+
+  <section>
+    <div class="scope" role="radiogroup" aria-label="Which settings you're changing">
+      <button type="button" id="scopeAll" role="radio">All sites</button>
+      <button type="button" id="scopeSite" role="radio">Only this site</button>
+    </div>
+    <p id="scopeNote" class="muted note"></p>
+    <label class="slider">
+      <span>Detection <output id="sensOut"></output></span>
+      <input type="range" id="sens" min="0" max="100" step="1">
+      <small class="scale"><span>Only white</span><span>Light tints &amp; colors</span></small>
+    </label>
+    <details id="advBox">
+      <summary>Fine-tune detection</summary>
+      <p class="muted note">Each one follows the Detection slider until you move it.</p>
+      <label class="slider">
+        <span>Darken backgrounds lighter than <output id="advBgOut"></output></span>
+        <input type="range" id="advBg" min="0" max="100" step="1">
+        <small class="scale"><span>Only white</span><span>Mid greys too</span></small>
+      </label>
+      <label class="slider">
+        <span>Lighten text darker than <output id="advTextOut"></output></span>
+        <input type="range" id="advText" min="0" max="100" step="1">
+        <small class="scale"><span>Only black</span><span>Mid greys too</span></small>
+      </label>
+      <label class="slider">
+        <span>Keep colored buttons &amp; badges <output id="advAccentOut"></output></span>
+        <input type="range" id="advAccent" min="0" max="100" step="1">
+        <small class="scale"><span>Darken them</span><span>Keep light ones too</span></small>
+      </label>
+      <button type="button" id="advReset" class="link">Follow the Detection slider again</button>
+    </details>
+    <label class="slider">
+      <span>Background shade <output id="bgOut"></output></span>
+      <input type="range" id="bg" min="4" max="30" step="1">
+    </label>
+    <label class="slider">
+      <span>Text brightness <output id="textOut"></output></span>
+      <input type="range" id="text" min="60" max="100" step="1">
+    </label>
+    <label class="check"><input type="checkbox" id="dimImages"> Dim images a little</label>
+    <button type="button" id="siteReset" class="link" hidden>Use the settings for all sites here again</button>
+  </section>
+
+  <section>
+    <label class="check"><input type="checkbox" id="autoDetect"> Skip sites that are already dark</label>
+  </section>
+
+  <footer>Runs 100% locally · <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> toggles this site</footer>
+  <script src="popup.js"></script>
+</body>
+</html>
